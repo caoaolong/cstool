@@ -60,7 +60,7 @@ func drawTable(buffer []byte) *tview.Table {
 			var idx = r*columns + c
 			for k, v := range conf.MBR {
 				if idx >= k[0] && idx < k[1] {
-					cell.SetBackgroundColor(tcell.NewHexColor(v.Color))
+					cell.SetTextColor(tcell.NewHexColor(v.Color))
 				}
 			}
 			table.SetCell(r, c, cell)
@@ -79,6 +79,7 @@ func drawTable(buffer []byte) *tview.Table {
 		table.SetCellSimple(r, columns, value.String())
 		table.SetCellSimple(r, columns+1, fmt.Sprintf("%04X", r*columns))
 	}
+	table.SetBordersColor(tcell.ColorBlack)
 	return table
 }
 
